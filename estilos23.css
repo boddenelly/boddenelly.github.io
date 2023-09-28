@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #8388a9;
+    color: rgb(213, 176, 176);
+}
+
+.contenedor{
+    width: 300px;
+    margin: auto;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    background: #012323;
+    padding: 20px;
+}
+
+form p{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+input[type="text"]{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.btn{
+    margin: 0 auto;
+    width: 18%;
+    background: #8388a9;
+    color: aliceblue;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 12px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.suma:hover{
+    background: black;
+    color: bisque;
+}
+
+.suma{
+    background: skyblue;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.resta:hover{
+   background: rgb(240, 11, 11);
+    color: bisque;
+}
+
+.resta{
+    background: rgb(97, 8, 133);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.divi:hover{
+   background: rgb(7, 62, 165);
+    color: bisque;
+}
+
+.divi{
+    background: rgb(6, 190, 37);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.multi:hover{
+    background: rgb(87, 207, 7);
+    color: bisque;
+}
+
+.multi{
+    background: rgb(2, 142, 177);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.resi:hover{
+     background: rgb(0, 0, 0);
+    color: bisque;
+}
+
+.resi{
+    background: rgb(179, 6, 43);
+    text-align: center;
+    border-radius: 10px;
+}
+
