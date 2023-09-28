@@ -1,0 +1,59 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box; 
+}
+
+body{
+    background: rgb(136, 202, 240);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contenedor{
+    margin: 40px auto;
+    width: 600px;
+}
+
+table{
+    background: rgb(9, 121, 115);
+    text-align: left;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td{
+        padding: 20px;
+}
+
+tr{
+    border: 5px solid black;
+    
+}
+
+thead{
+    background:rgb(60, 106, 128);
+    border-bottom: solid 5px #0f362d;
+    color: white;
+}
+
+tr:nth-child(even){
+    background: #ddd;
+}
+
+tr:hover td{
+    background: #369681;
+    color: white;
+}
+
+h1,h2{
+    text-align: center;
+    margin: 10px;
+    margin-top: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+
+
+
+
