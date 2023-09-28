@@ -1,0 +1,177 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style29.css">
+    <title>Lista de Tareas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        button.delete {
+            background-color: #ff3b30;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button.complete {
+            background-color: #4cd964;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .task-status {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tareas Pendientes</h1>
+
+        <!-- Formulario para ingresar nuevas tareas -->
+        <form id="todo-form">
+            <input type="text" id="task-input" placeholder="Ingrese una nueva tarea" required>
+            <button type="submit">Agregar Tarea</button>
+        </form>
+
+        <!-- Lista de tareas pendientes -->
+        <ul id="task-list">
+        </ul>
+
+        <div>
+            <h3>Estado de la Tarea:</h3>
+            <p id="task-status" class="task-status">Selecciona una tarea para ver su estado.</p>
+        </div>
+    </div>
+
+    <script>
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function addTask(taskText) {
+            tasks.push({ text: taskText, completed: false });
+            saveTasks();
+            displayTasks();
+        }
+
+        function displayTasks() {
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = '';
+
+            for (let i = 0; i < tasks.length; i++) {
+                const task = tasks[i];
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <span>${task.text}</span>
+                    <button class="complete" onclick="completeTask(${i})">Completada</button>
+                    <button class="delete" onclick="deleteTask(${i})">Eliminar</button>
+                `;
+                taskList.appendChild(listItem);
+            }
+        }
+
+        function completeTask(index) {
+            tasks[index].completed = !tasks[index].completed;
+            saveTasks();
+            displayTasks();
+            updateTaskStatus(index);
+        }
+
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            saveTasks();
+            displayTasks();
+            updateTaskStatus();
+        }
+
+        function updateTaskStatus(index) {
+            const taskStatus = document.getElementById('task-status');
+            if (index !== undefined) {
+                const statusText = tasks[index].completed ? 'Completada' : 'Incompleta';
+                taskStatus.innerHTML = `La tarea seleccionada está: <span class="task-status">${statusText}</span>`;
+            } else {
+                taskStatus.innerHTML = 'Selecciona una tarea para ver su estado.';
+            }
+        }
+
+        document.getElementById('todo-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const taskInput = document.getElementById('task-input');
+            const taskText = taskInput.value.trim();
+
+            if (taskText !== '') {
+                addTask(taskText);
+                taskInput.value = '';
+            }
+        });
+
+        displayTasks();
+    </script>
+</body>
+</html>
